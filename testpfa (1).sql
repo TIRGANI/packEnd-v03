@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mar. 24 mai 2022 à 23:25
+-- Généré le : ven. 27 mai 2022 à 02:52
 -- Version du serveur : 10.4.24-MariaDB
 -- Version de PHP : 8.0.19
 
@@ -56,15 +56,15 @@ CREATE TABLE `alert` (
 --
 
 INSERT INTO `alert` (`id`, `date`, `humidite`, `luminosite`, `temperature`, `boitier_id`, `parcelle_id`) VALUES
-(472, '1900-01-05', 7, NULL, NULL, NULL, 8),
-(471, '1900-01-19', 7, NULL, NULL, NULL, 7),
-(470, '2022-05-11', NULL, 7, NULL, NULL, 6),
-(469, '2022-05-19', NULL, NULL, 62, NULL, 6),
-(468, '2022-05-18', NULL, NULL, 20, NULL, 6),
-(467, '2022-05-17', NULL, NULL, 12, NULL, 6),
-(466, '2022-05-03', 7, NULL, NULL, NULL, 6),
-(465, '2022-05-02', 7, NULL, NULL, NULL, 6),
-(464, '2022-05-01', 7, NULL, NULL, NULL, 6);
+(580, '1900-01-05', 7, NULL, NULL, NULL, 8),
+(579, '1900-01-19', 7, NULL, NULL, NULL, 7),
+(578, '2022-05-11', NULL, 7, NULL, NULL, 6),
+(577, '2022-05-19', NULL, NULL, 62, NULL, 6),
+(576, '2022-05-18', NULL, NULL, 20, NULL, 6),
+(575, '2022-05-17', NULL, NULL, 12, NULL, 6),
+(574, '2022-05-03', 7, NULL, NULL, NULL, 6),
+(573, '2022-05-02', 7, NULL, NULL, NULL, 6),
+(572, '2022-05-01', 7, NULL, NULL, NULL, 6);
 
 -- --------------------------------------------------------
 
@@ -138,7 +138,8 @@ CREATE TABLE `ferme` (
 
 INSERT INTO `ferme` (`id`, `nbr_parcel`, `photo`, `user_user_id`) VALUES
 (75, 10, 'img/fermes/ticketing.png', 2),
-(76, 200, 'img/fermes/download (3).jpg', 2);
+(76, 200, 'img/fermes/download (3).jpg', 2),
+(77, 8000, 'img/fermes/plante7.jpg', 2);
 
 -- --------------------------------------------------------
 
@@ -160,14 +161,19 @@ CREATE TABLE `grandeur` (
 
 INSERT INTO `grandeur` (`id`, `date`, `type`, `valeur`, `parcelle_id`) VALUES
 (16, '1900-01-05', 'humedite', 7, 8),
-(15, '1900-01-19', 'humedite', 7, 7),
-(14, '2022-05-01', 'humedite', 7, 6),
-(13, '2022-05-02', 'humedite', 7, 6),
+(15, '1900-01-19', 'humedite', 1, 7),
+(14, '2022-05-01', 'humedite', 4, 6),
+(13, '2022-05-02', 'humedite', 5, 6),
 (12, '2022-05-03', 'humedite', 7, 6),
 (17, '2022-05-17', 'temperature', 12, 6),
 (18, '2022-05-18', 'temperature', 20, 6),
 (19, '2022-05-19', 'temperature', 62, 6),
-(20, '2022-05-11', 'luminosite', 7, 6);
+(20, '2022-05-11', 'luminosite', 7, 6),
+(21, '2022-05-19', 'temperature', 32, 6),
+(22, '2022-05-20', 'temperature', 10, 6),
+(23, '2022-05-21', 'temperature', 42, 6),
+(24, '2022-05-22', 'temperature', 32, 6),
+(25, '2022-05-23', 'temperature', 12, 6);
 
 -- --------------------------------------------------------
 
@@ -228,7 +234,8 @@ CREATE TABLE `parcelle` (
 INSERT INTO `parcelle` (`id`, `photo`, `surface`, `ferme_id`, `type_sole_id`) VALUES
 (6, 'img/parcelles/download (3).jpg', 3000, 76, 3),
 (7, 'img/parcelles/smart.jpg', 2000, 75, 3),
-(8, 'img/parcelles/ticketing.png', 1000, 75, 1);
+(8, 'img/parcelles/ticketing.png', 1000, 75, 1),
+(23, 'img/parcelles/parcelle5.jpg', 10, 77, 2);
 
 -- --------------------------------------------------------
 
@@ -250,7 +257,9 @@ CREATE TABLE `plantage` (
 --
 
 INSERT INTO `plantage` (`id`, `string`, `dateplantage`, `nbrplante`, `parcelle_id`, `plante_id`) VALUES
-(2, 'plantage 1', '2022-05-25', 100, 6, 5);
+(2, 'plantage 1', '2022-05-25', 100, 6, 5),
+(3, 'plantage 2', '2022-05-31', 10, 6, 6),
+(4, 'plantage 3', '2022-06-01', 15, 6, 7);
 
 -- --------------------------------------------------------
 
@@ -336,17 +345,18 @@ CREATE TABLE `type_plante` (
   `luminosite` float DEFAULT NULL,
   `temperature_max` float DEFAULT NULL,
   `temperature_min` float DEFAULT NULL,
-  `temperature` float DEFAULT NULL
+  `temperature` float DEFAULT NULL,
+  `besoin_deau` float DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `type_plante`
 --
 
-INSERT INTO `type_plante` (`id`, `etat`, `humidite_max`, `humidite_min`, `libelle`, `luminosite`, `temperature_max`, `temperature_min`, `temperature`) VALUES
-(1, 'etat 1', 20, 8, 'type 1', 10, 40, 34, NULL),
-(2, 'etat 1', 40, 8, 'type 2', 10, 40, 34, NULL),
-(3, 'etat 2', 30, 8, 'type 3', 20, 50, 44, NULL);
+INSERT INTO `type_plante` (`id`, `etat`, `humidite_max`, `humidite_min`, `libelle`, `luminosite`, `temperature_max`, `temperature_min`, `temperature`, `besoin_deau`) VALUES
+(1, 'etat 1', 20, 8, 'type 1', 10, 40, 34, NULL, 0.5),
+(2, 'etat 1', 40, 8, 'type 2', 10, 40, 34, NULL, 0.7),
+(3, 'etat 2', 30, 8, 'type 3', 20, 50, 44, NULL, 1.5);
 
 -- --------------------------------------------------------
 
@@ -365,11 +375,10 @@ CREATE TABLE `type_sole` (
 --
 
 INSERT INTO `type_sole` (`id`, `libelle`, `type`) VALUES
-(1, 'type  ...', 'type 1'),
-(2, 'type  ...', 'type 5'),
-(3, 'type  ...', 'type 2'),
-(4, 'type  ...', 'type 3'),
-(6, 'type **', 'type 4');
+(1, 'type 1', 'type 1'),
+(2, 'type 2', 'type 2'),
+(3, 'type 3', 'type 3'),
+(11, 'type 4', 'type 4');
 
 -- --------------------------------------------------------
 
@@ -548,7 +557,7 @@ ALTER TABLE `affectation`
 -- AUTO_INCREMENT pour la table `alert`
 --
 ALTER TABLE `alert`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=473;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=581;
 
 --
 -- AUTO_INCREMENT pour la table `boitier`
@@ -578,13 +587,13 @@ ALTER TABLE `employe`
 -- AUTO_INCREMENT pour la table `ferme`
 --
 ALTER TABLE `ferme`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT pour la table `grandeur`
 --
 ALTER TABLE `grandeur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT pour la table `historique`
@@ -608,13 +617,13 @@ ALTER TABLE `marque`
 -- AUTO_INCREMENT pour la table `parcelle`
 --
 ALTER TABLE `parcelle`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT pour la table `plantage`
 --
 ALTER TABLE `plantage`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `plante`
@@ -650,7 +659,7 @@ ALTER TABLE `type_plante`
 -- AUTO_INCREMENT pour la table `type_sole`
 --
 ALTER TABLE `type_sole`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT pour la table `user`
