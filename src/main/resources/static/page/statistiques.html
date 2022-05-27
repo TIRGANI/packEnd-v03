@@ -1,0 +1,89 @@
+<div class="container-fluid" style="margin-top: 5%;">
+    <div class="">
+        <p class="h2 text-center text-dark text-uppercase font-weight-bold">Statistiques
+        </p>
+        <hr class="line-seprate">
+        <section class="statistic statistic2">
+            <div class="container">
+                <div class="row">
+                    <a href="./index.html?p=employe" class="col-md-6 col-lg-3">
+                        <div class="statistic__item statistic__item--green">
+                            <h2 id="ferme" class="number">45</h2>
+                            <span class="desc">fermes</span>
+                            <div class="icon">
+                                <i class="zmdi zmdi-accounts"></i>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="./index.html?p=departement" class="col-md-6 col-lg-3">
+
+                        <div class="statistic__item statistic__item--orange">
+                            <h2 id="parcelle" class="number">20</h2>
+                            <span class="desc">parcelles</span>
+                            <div class="icon">
+                                <i class="zmdi zmdi-group-work"></i>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="./index.html?p=pointage" class="col-md-6 col-lg-3">
+                        <div class="statistic__item statistic__item--blue">
+                            <h2 id="plante" class="number">23</h2>
+                            <span class="desc">plantes</span>
+                            <div class="icon">
+                                <i class="zmdi zmdi-check"></i>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="./index.html" onclick="show('produit')" class="col-md-6 col-lg-3">
+                        <div class="statistic__item statistic__item--red">
+                            <h2 id="temperature" class="number">24°C</h2>
+                            <span class="desc">temperature</span>
+                            <div class="icon">
+                                <i class="zmdi zmdi-settings"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="card-body container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <canvas id="myChart" ></canvas>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <canvas id="byYear"></canvas>
+
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <label for="choix">Choisir type de graph : </label>
+                    <select class="form-control" id="choix" name="choix" onselect="select()">
+                        <option value="0">choisir un graph</option>
+                        <option value="temp">Temperature</option>
+                        <option value="hum">Humedite</option>
+                        <option value="qtt">Qtt D'eau Consomer par parcelle</option>
+                    </select>
+                </div>
+                <div>
+                    <div class="col-8">
+
+                        <select style="margin-top: 2rem" class="form-control" id="fermes" name="fermes" >
+                            <option value="0">choisir une Ferme</option>
+                        </select>
+                        <select style="margin-top: 2rem" class="form-control" id="parcelles" name="parcelles" >
+                            <option value="0">choisir une parcelle</option>
+                        </select>
+                    </div>
+                    <canvas id="EvaluTemp" ></canvas>
+                    <canvas id="EvaluHum"></canvas>
+                    <canvas id="ConsomationParcell"></canvas>
+                </div>
+
+
+            </div>
+        </section>
+    </div>
+</div>
+<script src="script/statistiques.js" type="text/javascript"></script>
